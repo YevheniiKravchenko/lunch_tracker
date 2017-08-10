@@ -7,6 +7,8 @@ defmodule LunchTracker.Menu.Dish do
   schema "dishes" do
     field :title, :string
 
+    belongs_to :menu_option, LunchTracker.Menu.MenuOption, foreign_key: :menu_option_id
+
     timestamps()
   end
 
