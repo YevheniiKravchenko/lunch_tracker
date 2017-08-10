@@ -7,5 +7,7 @@ defmodule LunchTrackerWeb.Router do
 
   scope "/api", LunchTrackerWeb do
     pipe_through :api
+
+    resources "/dishes", DishController, except: [:new, :edit]
   end
 end
