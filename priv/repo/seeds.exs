@@ -9,3 +9,5 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+LunchTracker.Repo.insert!(%LunchTracker.MenuOption{ id: 1 })

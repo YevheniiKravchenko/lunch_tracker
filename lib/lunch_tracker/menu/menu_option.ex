@@ -6,6 +6,8 @@ defmodule LunchTracker.Menu.MenuOption do
 
   schema "menu_options" do
     field :date, :date
+    field :cost, :float
+    field :cost_without_main, :float
 
     timestamps()
   end
