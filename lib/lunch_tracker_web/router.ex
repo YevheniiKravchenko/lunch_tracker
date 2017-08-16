@@ -10,5 +10,6 @@ defmodule LunchTrackerWeb.Router do
 
     resources "/dishes", DishController, except: [:new, :edit]
     resources "/menu_options", MenuOptionController, except: [:new, :edit]
+    post "load_menu", MenuLoaderController, :create
   end
 end
