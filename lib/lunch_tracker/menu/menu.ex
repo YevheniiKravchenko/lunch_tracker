@@ -2,7 +2,7 @@ defmodule LunchTracker.Menu do
   @moduledoc """
   The Menu context.
   """
-  
+
   import Ecto.Query, warn: false
   alias LunchTracker.Repo
 
@@ -19,6 +19,17 @@ defmodule LunchTracker.Menu do
   """
   def list_menu_options do
     Repo.all(MenuOption)
+  end
+
+  def list_menu_options(date) when is_nil(date) do
+    list_menu_options
+  end
+
+  def list_menu_options(date) do 
+    query = from item in MenuOption,
+            where: item.date == ^date
+
+    Repo.all(query)
   end
 
   @doc """
