@@ -12,6 +12,7 @@ defmodule LunchTracker.Menu.MenuOption do
     field :salad, :string
     field :cost, :float
     field :cost_without_main, :float
+    field :option_number, :integer
 
     timestamps()
   end
@@ -19,7 +20,7 @@ defmodule LunchTracker.Menu.MenuOption do
   @doc false
   def changeset(%MenuOption{} = menu_option, attrs) do
     menu_option
-    |> cast(attrs, [:date, :main, :side1, :side2, :salad, :cost, :cost_without_main])
-    |> validate_required([:date, :main, :cost, :cost_without_main])
+    |> cast(attrs, [:date, :main, :side1, :side2, :salad, :cost, :cost_without_main, :option_number])
+    |> validate_required([:date, :main, :cost, :cost_without_main, :option_number])
   end
 end

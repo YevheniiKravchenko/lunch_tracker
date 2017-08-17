@@ -2,7 +2,7 @@ defmodule LunchTracker.Menu do
   @moduledoc """
   The Menu context.
   """
-
+  
   import Ecto.Query, warn: false
   alias LunchTracker.Repo
 
@@ -100,5 +100,14 @@ defmodule LunchTracker.Menu do
   """
   def change_menu_option(%MenuOption{} = menu_option) do
     MenuOption.changeset(menu_option, %{})
+  end
+
+  def create_menu_items(menu, date) do
+    menu
+    |> Enum.each(fn item -> create_menu_item(item, date) end)
+  end
+
+  defp create_menu_item(item, date) do
+    create_menu_option(%{ item | date: date })
   end
 end

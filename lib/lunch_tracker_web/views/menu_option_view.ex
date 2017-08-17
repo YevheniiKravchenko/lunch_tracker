@@ -12,6 +12,13 @@ defmodule LunchTrackerWeb.MenuOptionView do
 
   def render("menu_option.json", %{menu_option: menu_option}) do
     %{id: menu_option.id,
-      date: menu_option.date}
+      date: menu_option.date,
+      main: menu_option.main,
+      side1: menu_option.side1,
+      side2: menu_option.side2,
+      salad: menu_option.salad,
+      cost: menu_option.cost,
+      cost_without_main: menu_option.cost_without_main,
+    }
   end
 end
