@@ -17,19 +17,12 @@ defmodule LunchTracker.Menu do
       [%MenuOption{}, ...]
 
   """
-  def list_menu_options do
-    Repo.all(MenuOption)
-  end
+  def list_menu_options, do: Repo.all(MenuOption)
 
-  def list_menu_options(date) when is_nil(date) do
-    list_menu_options
-  end
+  def list_menu_options(date) when is_nil(date), do: list_menu_options
 
   def list_menu_options(date) do 
-    query = from item in MenuOption,
-            where: item.date == ^date
-
-    Repo.all(query)
+    Repo.all from item in MenuOption, where: item.date == ^date
   end
 
   @doc """
