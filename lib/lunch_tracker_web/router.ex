@@ -9,6 +9,7 @@ defmodule LunchTrackerWeb.Router do
     pipe_through :api
 
     resources "/menu_options", MenuOptionController, except: [:new, :edit]
+    resources "/users", UserController, only: [:create]
     post "/load_menu", MenuLoaderController, :create
   end
 end

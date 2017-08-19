@@ -39,7 +39,10 @@ defmodule LunchTracker.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:csv, "~> 2.0.0"}
+      {:csv, "~> 2.0.0"},
+      {:cors_plug, "~> 1.4.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"}
     ]
   end
 

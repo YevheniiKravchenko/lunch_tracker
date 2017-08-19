@@ -36,6 +36,7 @@ defmodule LunchTrackerWeb.Endpoint do
     key: "_lunch_tracker_key",
     signing_salt: "tBB0mgps"
 
+  plug CORSPlug
   plug LunchTrackerWeb.Router
 
   @doc """
