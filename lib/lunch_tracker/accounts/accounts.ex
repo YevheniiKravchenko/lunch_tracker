@@ -35,7 +35,7 @@ defmodule LunchTracker.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id), do: Repo.get!(User, id) 
 
   @doc """
   Creates a user.
@@ -53,6 +53,10 @@ defmodule LunchTracker.Accounts do
     %User{}
     |> User.registration_changeset(attrs)
     |> Repo.insert()
+  end
+
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: email)
   end
 
   @doc """

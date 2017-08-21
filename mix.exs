@@ -42,7 +42,9 @@ defmodule LunchTracker.Mixfile do
       {:csv, "~> 2.0.0"},
       {:cors_plug, "~> 1.4.0"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12"}
+      {:bcrypt_elixir, "~> 0.12"},
+      {:secure_random, "~> 0.5.1"},
+      {:guardian, "~> 0.14.5"}
     ]
   end
 
