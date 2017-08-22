@@ -32,6 +32,7 @@ defmodule LunchTrackerWeb.AuthController do
   def logout(conn, _params) do
     token = Guardian.Plug.current_token(conn)
     {:ok, claims} = Guardian.Plug.claims(conn)
+
     Guardian.revoke!(token, claims)
     
     conn

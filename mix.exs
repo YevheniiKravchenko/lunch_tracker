@@ -44,7 +44,8 @@ defmodule LunchTracker.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
       {:secure_random, "~> 0.5.1"},
-      {:guardian, "~> 0.14.5"}
+      {:guardian, "~> 0.14.5"},
+      {:guardian_db, "~> 0.8.0"}
     ]
   end
 

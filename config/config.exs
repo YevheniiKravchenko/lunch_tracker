@@ -23,6 +23,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :guardian, Guardian,
+  hooks: GuardianDb,
   allowed_algos: ["HS512"],
   verify_module: Guardian.JWT,
   issuer: "LunchTracker",
@@ -30,6 +31,10 @@ config :guardian, Guardian,
   verify_issuer: true,
   secret_key: "8kRBfPUifq1wwHNqpKQNHvYKnpY6GEcZXdThGAk1WPcXBAVEM1uvku9B8IGmst6z",
   serializer: LunchTracker.GuardianSerializer
+
+config :guardian_db, GuardianDb,
+  repo: LunchTracker.Repo,
+  schema_name: "auth_tokens"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
