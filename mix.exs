@@ -45,7 +45,8 @@ defmodule LunchTracker.Mixfile do
       {:bcrypt_elixir, "~> 0.12"},
       {:secure_random, "~> 0.5.1"},
       {:guardian, "~> 0.14.5"},
-      {:guardian_db, "~> 0.8.0"}
+      {:guardian_db, "~> 0.8.0"},
+      {:liqpay, github: "liqpay/sdk-erlang"}
     ]
   end
 

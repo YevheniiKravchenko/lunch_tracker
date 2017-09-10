@@ -19,6 +19,7 @@ defmodule LunchTrackerWeb.MenuOptionView do
       salad: menu_option.salad,
       cost: menu_option.cost,
       cost_without_main: menu_option.cost_without_main,
+      option_number: menu_option.option_number
     }
   end
 end

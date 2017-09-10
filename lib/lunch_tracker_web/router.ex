@@ -23,7 +23,7 @@ defmodule LunchTrackerWeb.Router do
 
     resources "/menu_options", MenuOptionController, except: [:new, :edit]
     post "/load_menu", MenuLoaderController, :create
-    post "/order_lunch", OrderLunchController, :create
+    resources "/orders", OrderController, except: [:new, :edit]
 
     get "/logout", AuthController, :logout
   end

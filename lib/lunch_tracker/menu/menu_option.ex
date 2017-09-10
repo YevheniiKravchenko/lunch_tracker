@@ -2,6 +2,7 @@ defmodule LunchTracker.Menu.MenuOption do
   use Ecto.Schema
   import Ecto.Changeset
   alias LunchTracker.Menu.MenuOption
+  alias LunchTracker.Orders.Order
 
 
   schema "menu_options" do
@@ -13,6 +14,8 @@ defmodule LunchTracker.Menu.MenuOption do
     field :cost, :float
     field :cost_without_main, :float
     field :option_number, :integer
+
+    has_many :orders, Order
 
     timestamps()
   end
