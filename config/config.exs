@@ -36,6 +36,9 @@ config :guardian_db, GuardianDb,
   repo: LunchTracker.Repo,
   schema_name: "auth_tokens"
 
+config :cors_plug,
+  expose: ["Authorization"]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
