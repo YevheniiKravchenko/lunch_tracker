@@ -13,7 +13,7 @@ defmodule LunchTrackerWeb.Router do
   scope "/api", LunchTrackerWeb do
     pipe_through :api
 
-    post "/register", UserController, :register
+    post "/register", AuthController, :register
     post "/login", AuthController, :login
   end
 
