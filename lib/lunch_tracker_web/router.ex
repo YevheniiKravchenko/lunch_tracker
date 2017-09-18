@@ -13,16 +13,20 @@ defmodule LunchTrackerWeb.Router do
   scope "/api", LunchTrackerWeb do
     pipe_through :api
 
-    resources "/users", UserController, only: [:create]
-
+    post "/register", UserController, :register
     post "/login", AuthController, :login
   end
 
   scope "/api", LunchTrackerWeb do 
     pipe_through :api_auth
 
-    resources "/menu_options", MenuOptionController, except: [:new, :edit]
+    get "/profile", UserController, :get_profile
+    post "/profile", UserController, :update_profile
+
+    #resources "/users", UserController, only: [:create]
     post "/load_menu", MenuLoaderController, :create
+
+    resources "/menu_options", MenuOptionController, except: [:new, :edit]
     resources "/orders", OrderController, except: [:new, :edit]
 
     get "/logout", AuthController, :logout

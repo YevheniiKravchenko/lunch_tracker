@@ -3,11 +3,12 @@ defmodule LunchTrackerWeb.AuthController do
 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
+  alias LunchTrackerWeb.AuthController
 	alias LunchTracker.Accounts
   alias LunchTracker.Accounts.User
   alias LunchTracker.Auth
 
-  plug :scrub_params, "user" when action in [:login]
+  plug :scrub_params, "user" when action in [:login, :register]
 
   def login(conn, %{"user" => user_params}) do 
 
@@ -26,6 +27,19 @@ defmodule LunchTrackerWeb.AuthController do
         conn
         |> put_status(:unauthorized)
         |> render("error.json", user_params)
+    end
+  end
+
+  def register(conn, user_with_credentials) do 
+    %{"user" => credentials} = user_with_credentials
+    case Accounts.create_user(credentials) do
+      {:ok, user} ->
+        conn
+        |> AuthController.login(user_with_credentials)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(LunchTrackerWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

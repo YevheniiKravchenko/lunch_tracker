@@ -8,7 +8,6 @@ defmodule LunchTracker.Auth do
 
   alias LunchTracker.Accounts
 
-
   def authenticate(%{email: email, password: password}) do
     user = Accounts.get_user_by_email(email)
 

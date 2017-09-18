@@ -6,6 +6,7 @@ defmodule LunchTracker.Accounts.User do
 
   schema "users" do
     field :email, :string
+    field :name, :string
     field :password_hash, :string
     field :password, :string, virtual: true
     has_many :orders, Order
@@ -16,7 +17,7 @@ defmodule LunchTracker.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email])
+    |> cast(attrs, [:email, :name])
     |> validate_required([:email])
     |> validate_format(:email, ~r/@/)
   end
@@ -28,6 +29,7 @@ defmodule LunchTracker.Accounts.User do
     |> cast(attrs, [:password])
     |> validate_required(:password)
     |> validate_length(:password, min: 6)
+    |> unique_constraint(:email)
     |> put_password_hash
   end
 
