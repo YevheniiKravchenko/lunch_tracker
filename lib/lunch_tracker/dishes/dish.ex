@@ -3,6 +3,7 @@ defmodule LunchTracker.Dishes.Dish do
   import Ecto.Changeset
   alias LunchTracker.Dishes.Dish
   alias LunchTracker.Dishes.Category
+  alias LunchTracker.Menu.MenuItem
 
   schema "dishes" do
     field :cost, :float
@@ -10,6 +11,7 @@ defmodule LunchTracker.Dishes.Dish do
     field :title, :string
 
     belongs_to :category, Category
+    has_many :menu_items, MenuItem
 
     timestamps()
   end

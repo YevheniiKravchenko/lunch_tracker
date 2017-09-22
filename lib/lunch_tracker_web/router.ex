@@ -27,9 +27,11 @@ defmodule LunchTrackerWeb.Router do
     # post "/load_menu", MenuLoaderController, :create_menu
     post "/upload_dishes", MenuLoaderController, :update_dishes
     post "/upload_categories", MenuLoaderController, :update_categories
+    post "/upload_day_menu", MenuLoaderController, :create_day_menu
 
     resources "/menu_options", MenuOptionController, except: [:new, :edit] # to remove
     resources "/orders", OrderController, except: [:new, :edit] # to remove
+    resources "/menu_items", MenuItemController, except: [:new, :edit]
 
     resources "/dishes", DishController, except: [:new, :edit]
 

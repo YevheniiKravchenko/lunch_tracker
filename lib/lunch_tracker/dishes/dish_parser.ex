@@ -34,7 +34,7 @@ defmodule LunchTracker.Dishes.DishParser do
 
   defp add_item(%{ menu: menu, current_category: category }, [ id, category_id, title, cost, quantity ]) do
     [ %{
-      id: id,
+      id: String.to_integer(id),
       category_id: category_id,
       title: title,
       cost: String.to_float(cost),
