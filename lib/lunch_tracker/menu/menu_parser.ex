@@ -1,4 +1,4 @@
-defmodule LunchTracker.Menu.Parser do
+defmodule LunchTracker.Menu.MenuParser do
 	alias LunchTracker.Menu.MenuOption
 	alias LunchTracker.Menu	
 
@@ -10,14 +10,6 @@ defmodule LunchTracker.Menu.Parser do
     |> Enum.map(&format_menu_item/1)
     |> add_menu_option_numbers
   end
-
-  # defp parse_menu(content) do
-  #   t = Enum.map(content, &(Enum.drop_every(&1, 2)))
-  #   |> Enum.reverse
-  #   |> List.zip
-
-  #   IEx.pry
-  # end
 
   defp parse_menu(content) do
     parse_menu(content, [])
@@ -54,9 +46,7 @@ defmodule LunchTracker.Menu.Parser do
     end
   end
 
-  defp format_menu_item(item) do
-    { main, side1, side2, salad, cost, cost_without_main } = item 
-
+  defp format_menu_item({ main, side1, side2, salad, cost, cost_without_main }) do 
     %{
       main: main,
       side1: side1,
