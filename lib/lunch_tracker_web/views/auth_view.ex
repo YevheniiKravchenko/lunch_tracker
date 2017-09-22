@@ -1,9 +1,6 @@
 defmodule LunchTrackerWeb.AuthView do
 	use LunchTrackerWeb, :view
 
-	alias LunchTrackerWeb.AuthView
-  alias LunchTracker.Accounts.User
-
 	def render("login.json", %{user: user}) do
     %{data: %{
       user: %{

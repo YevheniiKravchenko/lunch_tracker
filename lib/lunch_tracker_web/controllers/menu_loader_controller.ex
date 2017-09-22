@@ -1,23 +1,11 @@
 defmodule LunchTrackerWeb.MenuLoaderController do
   use LunchTrackerWeb, :controller
 
-  alias LunchTracker.Dishes.DishParser
-  alias LunchTracker.Dishes.CategoryParser  
-  alias LunchTracker.Menu.MenuParser
-  alias LunchTracker.Menu
-  alias LunchTracker.Dishes
+  alias LunchTracker.{Menu,Dishes}
+  alias LunchTracker.Dishes.{DishParser,CategoryParser}
+  alias LunchTrackerWeb.AuthController
 
-
-  def create_menu(conn, %{"menu" => uploaded_menu_csv, "date" => date}) do
-    %{ path: csv_temp_path } = uploaded_menu_csv
-
-    MenuParser.parse(csv_temp_path) 
-    |> Menu.create_menu_option_items(date)
-
-    conn
-    |> put_status(:ok)
-    |> render("success.json", %{status: "OK"})
-  end
+  plug Guardian.Plug.EnsureAuthenticated, handler: AuthController
 
   def update_dishes(conn, %{"dishes" => dishes_csv}) do
   	%{ path: csv_temp_path } = dishes_csv

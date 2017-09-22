@@ -4,9 +4,7 @@ defmodule LunchTrackerWeb.AuthController do
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
   alias LunchTrackerWeb.AuthController
-	alias LunchTracker.Accounts
-  alias LunchTracker.Accounts.User
-  alias LunchTracker.Auth
+	alias LunchTracker.{Auth,Accounts}
 
   plug :scrub_params, "user" when action in [:login, :register]
 
@@ -33,7 +31,7 @@ defmodule LunchTrackerWeb.AuthController do
   def register(conn, user_with_credentials) do 
     %{"user" => credentials} = user_with_credentials
     case Accounts.create_user(credentials) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> AuthController.login(user_with_credentials)
       {:error, changeset} ->
@@ -50,6 +48,12 @@ defmodule LunchTrackerWeb.AuthController do
     Guardian.revoke!(token, claims)
     
     conn
-    |> render "logout.json"
+    |> render("logout.json")
+  end
+
+  def unauthenticated(conn, _params) do
+    conn
+    |> put_status(401)
+    |> json(%{error: "Unauthorized"})
   end
 end

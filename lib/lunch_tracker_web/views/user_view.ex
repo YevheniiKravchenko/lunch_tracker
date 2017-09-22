@@ -20,12 +20,4 @@ defmodule LunchTrackerWeb.UserView do
       error: true
     }
   end
-  # def render("login.json", %{user: user}) do
-  #   %{data: %{
-  #     user: %{
-  #       id: user.id,
-  #       email: user.email
-  #     }
-  #   }}
-  # end
 end

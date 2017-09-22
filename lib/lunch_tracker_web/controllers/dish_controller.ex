@@ -3,8 +3,11 @@ defmodule LunchTrackerWeb.DishController do
 
   alias LunchTracker.Dishes
   alias LunchTracker.Dishes.Dish
+  alias LunchTrackerWeb.AuthController
 
   action_fallback LunchTrackerWeb.FallbackController
+
+  plug Guardian.Plug.EnsureAuthenticated, handler: AuthController
 
   def index(conn, _params) do
     dishes = Dishes.list_dishes()

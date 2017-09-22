@@ -104,6 +104,13 @@ defmodule LunchTracker.Dishes do
     Dish.changeset(dish, %{})
   end
 
+  @doc """
+  Updates dishes in batch
+
+  ## Examples
+
+      iex> update_dishes(dishes)
+  """
   def update_dishes(dishes), do: Enum.each(dishes, &update_or_create_dish/1)
 
   def update_or_create_dish(attrs) do

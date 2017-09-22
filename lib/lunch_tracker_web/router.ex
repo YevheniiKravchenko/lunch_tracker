@@ -23,17 +23,12 @@ defmodule LunchTrackerWeb.Router do
     get "/profile", UserController, :get_profile
     post "/profile", UserController, :update_profile
 
-    #resources "/users", UserController, only: [:create]
-    # post "/load_menu", MenuLoaderController, :create_menu
     post "/upload_dishes", MenuLoaderController, :update_dishes
     post "/upload_categories", MenuLoaderController, :update_categories
     post "/upload_day_menu", MenuLoaderController, :create_day_menu
 
-    resources "/menu_options", MenuOptionController, except: [:new, :edit] # to remove
-    resources "/orders", OrderController, except: [:new, :edit] # to remove
-    resources "/menu_items", MenuItemController, except: [:new, :edit]
-
     resources "/dishes", DishController, except: [:new, :edit]
+    resources "/menu_items", MenuItemController, except: [:new, :edit]
 
     get "/logout", AuthController, :logout
   end

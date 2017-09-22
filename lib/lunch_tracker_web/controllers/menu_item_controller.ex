@@ -3,8 +3,11 @@ defmodule LunchTrackerWeb.MenuItemController do
 
   alias LunchTracker.Menu
   alias LunchTracker.Menu.MenuItem
+  alias LunchTrackerWeb.AuthController
 
   action_fallback LunchTrackerWeb.FallbackController
+
+  plug Guardian.Plug.EnsureAuthenticated, handler: AuthController
 
   def index(conn, params) do
     menu_items = Menu.list_menu_items(params["date"])
