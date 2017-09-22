@@ -141,9 +141,16 @@ defmodule LunchTracker.Menu do
       [%MenuItem{}, ...]
 
   """
-  def list_menu_items do
-    Repo.all(MenuItem)
+  def list_menu_items do 
+    Repo.all from MenuItem, preload: [:dish]
   end
+
+  def list_menu_items(date) when is_nil(date), do: list_menu_items
+
+  def list_menu_items(date) do 
+    Repo.all from item in MenuItem, where: item.date == ^date, preload: [:dish]
+  end
+
 
   @doc """
   Gets a single menu_item.

@@ -6,8 +6,8 @@ defmodule LunchTrackerWeb.MenuItemController do
 
   action_fallback LunchTrackerWeb.FallbackController
 
-  def index(conn, _params) do
-    menu_items = Menu.list_menu_items()
+  def index(conn, params) do
+    menu_items = Menu.list_menu_items(params["date"])
     render(conn, "index.json", menu_items: menu_items)
   end
 
