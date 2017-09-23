@@ -2,14 +2,12 @@ defmodule LunchTracker.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias LunchTracker.Accounts.User
-  alias LunchTracker.Orders.Order
 
   schema "users" do
     field :email, :string
     field :name, :string
     field :password_hash, :string
     field :password, :string, virtual: true
-    has_many :orders, Order
 
     timestamps()
   end
